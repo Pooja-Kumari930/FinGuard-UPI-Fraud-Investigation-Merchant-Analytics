@@ -1,0 +1,11 @@
+Dataset,Issue,Original Count,Treatment,Result Count
+Transactions,Exact duplicate rows,400,Removed,400
+Transactions,Missing UTR,1024,Flagged as invalid/missing,1000
+Transactions,Missing MCC,2926,Retained as blank,2872
+KYC,Exact duplicate rows,278,Removed,278
+KYC,Raw rows,36400,Unique users after normalization,28920
+Merchants,Exact duplicate rows,12,Removed,12
+Merchants,Raw rows,6210,Unique merchants after normalization,4343
+Chargebacks,Exact duplicate rows,84,Removed,84
+Chargebacks,Blank disputed amount,183,Imputed from linked transaction,157
+Chargebacks,Blank transaction ID,81,Kept unmatched,81
