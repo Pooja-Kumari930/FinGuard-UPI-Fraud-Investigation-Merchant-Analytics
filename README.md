@@ -23,4 +23,10 @@ Investigation signals are analytical prioritization aids. They are not confirmed
 python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
-https://github.com/Pooja-Kumari930/FinGuard-UPI-Fraud-Investigation-Merchant-Analytics.git
+## Project Presentation
+
+📊 [View / Download FinGuard Project Presentation](FinGuard_Project_Presentation.pptx)
+
+## Live Dashboard
+
+🚀 [Open FinGuard Dashboard](https://finguard-upi-fraud-investigation-merchant-analytics-fjb83w6gfs.streamlit.app/)
