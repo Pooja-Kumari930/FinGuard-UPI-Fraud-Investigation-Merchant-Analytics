@@ -29,4 +29,4 @@ python -m streamlit run app.py
 
 ## Live Dashboard
 
-🚀 [Open FinGuard Dashboard](https://finguard-upi-fraud-investigation-merchant-analytics-fjb83w6gfs.streamlit.app/)
+🚀 [Open FinGuard Dashboard](https://finguard-upi-fraud-investigation-merchant-analytics-gyqshhx268.streamlit.app/)
