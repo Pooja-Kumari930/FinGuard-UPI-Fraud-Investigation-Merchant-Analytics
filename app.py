@@ -15,29 +15,42 @@ st.set_page_config(
 # ---------- Theme / layout ----------
 st.markdown("""
 <style>
-.stApp{background:linear-gradient(135deg,#d8ecff 0%,#e9e5ff 48%,#ffddeb 100%);background-attachment:fixed;}
-[data-testid="stHeader"]{background:transparent;}
-[data-testid="stSidebar"]{background:linear-gradient(180deg,#cfe8ff 0%,#dedfff 50%,#ffd8e9 100%);border-right:1px solid rgba(36,87,166,.18);min-width:280px;max-width:280px;}
-[data-testid="stSidebar"]>div:first-child{background:transparent;padding-top:1.2rem;}
-[data-testid="stSidebar"] h2,[data-testid="stSidebar"] label{color:#173b68!important;}
-[data-testid="stSidebar"] .stCaption{color:#496a8f!important;}
-[data-testid="stSidebar"] [data-baseweb="select"]{width:100%!important;}
-.block-container{padding-top:1.0rem;padding-bottom:2rem;max-width:1500px;}
-.hero{padding:24px 30px 22px;border-radius:24px;background:linear-gradient(110deg,#2457a6 0%,#3f86c7 52%,#d85b91 100%);box-shadow:0 14px 38px rgba(45,85,140,.22);margin-bottom:20px;}
-.hero h1{color:#fff;font-size:38px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;}
-.hero p{color:#eef8ff;margin:0;font-size:15px;}
-.kpi{background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.9);border-radius:18px;padding:16px 18px;box-shadow:0 8px 24px rgba(55,91,130,.11);min-height:108px;overflow:hidden;}
-.kpi .label{color:#55708d;font-size:13px;white-space:nowrap;}
-.kpi .value{color:#173f70;font-size:25px;font-weight:800;margin-top:6px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.kpi .hint{color:#7a6b86;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.section{color:#183b67;font-size:21px;font-weight:800;margin:20px 0 8px;}
-.subtle{color:#5f7187;font-size:13px;}
-.card{background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.72);border-radius:18px;padding:15px 18px;box-shadow:0 8px 24px rgba(55,91,130,.08);}
-.signal{background:linear-gradient(135deg,rgba(36,87,166,.12),rgba(216,91,145,.13));border:1px solid rgba(36,87,166,.16);border-radius:15px;padding:12px 15px;margin-bottom:8px;color:#173b68;}
-div[data-baseweb="select"]>div{border-radius:10px;border:1px solid rgba(36,87,166,.18);}
-button[data-baseweb="tab"]{font-weight:700;}
-[data-testid="stMetricValue"]{color:#173f70;}
-@media (max-width: 900px){.kpi .value{font-size:20px}.hero h1{font-size:28px}}
+/* FinGuard — safe premium purple-charcoal theme */
+:root{--bg:#151126;--panel:#211a32;--panel2:#261e3b;--border:#3a3154;--cyan:#27e6f5;--red:#ff4d78;--purple:#8b5cf6;--text:#f7f4ff;--muted:#b9b1cc;--dim:#8f87a4;}
+html,body,.stApp{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#151126!important;color:var(--text)!important;}
+.stApp{background:radial-gradient(circle at 8% 5%,rgba(139,92,246,.22),transparent 27%),radial-gradient(circle at 94% 8%,rgba(39,230,245,.10),transparent 23%),linear-gradient(135deg,#151126 0%,#19132b 52%,#120e20 100%)!important;min-height:100vh;}
+.block-container{max-width:1540px;padding-top:1.2rem;padding-bottom:2.5rem;}
+[data-testid="stHeader"]{background:transparent!important;}
+[data-testid="stSidebar"]{background:#171228!important;border-right:1px solid #3a3154!important;min-width:292px;max-width:292px;}
+[data-testid="stSidebar"]>div:first-child{background:transparent!important;padding-top:1rem;}
+[data-testid="stSidebar"] *{color:var(--text)!important;}
+[data-testid="stCaptionContainer"] *{color:var(--muted)!important;}
+.stMarkdown,.stMarkdown p,.stMarkdown span,.stMarkdown li{color:var(--text)!important;}
+[data-testid="stWidgetLabel"] *{color:var(--text)!important;}
+.hero{position:relative;overflow:hidden;padding:28px 32px 26px;margin-bottom:22px;border-radius:22px;background:linear-gradient(135deg,#29203e,#211a33)!important;border:1px solid #4a3d67!important;box-shadow:0 18px 45px rgba(0,0,0,.28)!important;}
+.hero:after{content:"";position:absolute;right:-70px;top:-100px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(39,230,245,.16),transparent 68%);pointer-events:none;}
+.hero h1{position:relative;color:#fff!important;font-size:37px;margin:0 0 8px;font-weight:800;letter-spacing:-.7px;line-height:1.15;}
+.hero p{position:relative;color:#c8c0d8!important;margin:0;font-size:14px;}
+.kpi,.card,.signal{background:#211a32!important;border:1px solid #3a3154!important;box-shadow:0 12px 30px rgba(0,0,0,.22)!important;}
+.kpi{border-radius:16px;padding:16px 18px;min-height:108px;overflow:hidden;position:relative;}
+.kpi:hover,.card:hover{transform:translateY(-3px);border-color:#7562a4!important;}
+.kpi .label{color:#bdb5cf!important;font-size:12px;font-weight:700;white-space:nowrap;text-transform:uppercase;letter-spacing:.6px;}
+.kpi .value{color:#fff!important;font-size:26px;font-weight:800;margin-top:7px;line-height:1.15;}
+.kpi .hint{color:#9188a7!important;font-size:10.5px;margin-top:8px;}
+.card{border-radius:16px;padding:15px 18px;}
+.signal{border-radius:13px;padding:12px 15px;margin-bottom:8px;color:#f1edf8!important;background:#291b32!important;}
+.signal:hover{transform:translateY(-2px);border-color:#b13d64!important;}
+.section{color:#fff!important;font-size:20px;font-weight:800;margin:22px 0 8px;}
+.subtle{color:#aaa1bd!important;font-size:12.5px;line-height:1.6;}
+div[data-testid="stVerticalBlockBorderWrapper"]{background:#211a32!important;border:1px solid #3a3154!important;border-radius:16px!important;}
+button[data-baseweb="tab"]{color:#aaa1bd!important;font-weight:700!important;background:transparent!important;}
+button[data-baseweb="tab"][aria-selected="true"]{color:#fff!important;background:#2b2142!important;box-shadow:inset 0 -2px 0 #27e6f5!important;border-radius:9px 9px 0 0!important;}
+div[data-baseweb="select"]>div{background:#241c37!important;color:#fff!important;border:1px solid #42365c!important;border-radius:10px!important;}
+[role="option"]{background:#241c37!important;color:#fff!important;}
+[role="option"]:hover{background:#33274b!important;}
+.stButton>button{color:#fff!important;background:linear-gradient(90deg,#7048d9,#8b5cf6)!important;border:1px solid #9d7df0!important;border-radius:10px!important;font-weight:700!important;}
+.stTextInput input,.stTextArea textarea{background:#241c37!important;color:#fff!important;border:1px solid #42365c!important;border-radius:10px!important;}
+.stDataFrame{border:1px solid #3a3154!important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -74,14 +87,14 @@ def base_layout(fig, height=390, margin=None):
     if margin is None:
         margin = dict(l=18, r=18, t=58, b=42)
     fig.update_layout(
-        paper_bgcolor="rgba(255,255,255,0.34)",
-        plot_bgcolor="rgba(241,248,255,0.60)",
-        font=dict(color="#46627f", size=12),
-        title_font=dict(color="#183b67", size=18),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(10,14,23,0.72)",
+        font=dict(color="#B9B2C4", size=12),
+        title_font=dict(color="#FFFFFF", size=18),
         margin=margin,
         height=height,
-        hoverlabel=dict(bgcolor="white", font_color="#183b67"),
-        legend=dict(bgcolor="rgba(255,255,255,.45)"),
+        hoverlabel=dict(bgcolor="#151d2c", bordercolor="#00f0ff", font_color="#FFFFFF"),
+        legend=dict(bgcolor="rgba(10,14,23,.82)", font=dict(color="#E7ECF5")),
     )
     return fig
 
@@ -103,13 +116,13 @@ def network_graph(data, merchant_id):
         x1, y1 = pos[mid]; x2, y2 = pos[u]
         edge_x += [x1, x2, None]; edge_y += [y1, y2, None]
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=edge_x, y=edge_y, mode="lines", line=dict(width=1.5, color="rgba(63,134,199,.45)"), hoverinfo="none"))
+    fig.add_trace(go.Scatter(x=edge_x, y=edge_y, mode="lines", line=dict(width=1.5, color="rgba(0,240,255,.34)"), hoverinfo="none"))
     xs = [n[2] for n in nodes]; ys = [n[3] for n in nodes]
     labels = [n[1] for n in nodes]
     sizes = [34] + [15] * len(users)
     texts = [f"Merchant: {merchant_name}<br>ID: {mid}"] + [f"User: {u}" for u in users]
     fig.add_trace(go.Scatter(x=xs, y=ys, mode="markers+text", text=labels, textposition="top center", marker=dict(size=sizes, line=dict(width=2, color="white")), customdata=texts, hovertemplate="%{customdata}<extra></extra>"))
-    fig.update_layout(showlegend=False, xaxis=dict(visible=False), yaxis=dict(visible=False, scaleanchor="x", scaleratio=1), paper_bgcolor="rgba(255,255,255,.25)", plot_bgcolor="rgba(241,248,255,.5)", margin=dict(l=10,r=10,t=20,b=10), height=470)
+    fig.update_layout(showlegend=False, xaxis=dict(visible=False), yaxis=dict(visible=False, scaleanchor="x", scaleratio=1), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(10,14,23,0.72)", margin=dict(l=10,r=10,t=20,b=10), height=470)
     return fig, None
 
 # ---------- Header ----------
@@ -162,14 +175,14 @@ for col, label, value, hint in kpis:
 
 # ---------- Tabs ----------
 tab1, tab2, tab3, tab4 = st.tabs(["📊 Overview", "🚨 Risk Investigation", "🕸️ Fraud Ring Explorer", "🤖 Ask FinGuard"])
-chart_template = "plotly_white"
+chart_template = "plotly_dark"
 
 def add_category_chargeback_chart(data):
     g = data.groupby("merchant_category", dropna=False).agg(transactions=("txn_id", "count"), chargebacks=("chargeback_count", "sum"), value=("amount_inr", "sum")).reset_index()
     g["chargeback_rate"] = 100 * g["chargebacks"] / g["transactions"].replace(0, pd.NA)
     g = g.dropna(subset=["chargeback_rate"]).sort_values("chargeback_rate", ascending=False).head(12)
     fig = px.bar(g, x="chargeback_rate", y="merchant_category", orientation="h", text=g["chargeback_rate"].map(lambda x: f"{x:.1f}%"), title="Chargeback Rate by Merchant Category", template=chart_template)
-    fig.update_traces(marker_color="#d85b91", textposition="outside", cliponaxis=False)
+    fig.update_traces(marker_color="#ff3366", textposition="outside", cliponaxis=False)
     fig.update_xaxes(title="Chargeback rate (%)", rangemode="tozero")
     return base_layout(fig, 410, dict(l=18,r=40,t=58,b=38))
 
@@ -178,30 +191,68 @@ with tab1:
     with c1:
         daily = f.dropna(subset=["timestamp"]).assign(date=f.dropna(subset=["timestamp"])["timestamp"].dt.floor("D")).groupby("date", as_index=False).agg(value=("amount_inr", "sum"))
         fig = px.line(daily, x="date", y="value", title="Daily Transaction Value", template=chart_template, markers=False, hover_data={"value":":,.0f"})
-        fig.update_traces(line=dict(width=3, color="#3f86c7"))
+        fig.update_traces(line=dict(width=3, color="#00f0ff"))
         fig.update_xaxes(type="date", tickformat="%b %d", dtick="M1", title="Date", showgrid=False)
         fig.update_yaxes(title="Transaction value (₹)", tickprefix="₹", separatethousands=True, rangemode="tozero")
-        st.plotly_chart(base_layout(fig, 390, dict(l=20,r=20,t=58,b=50)), use_container_width=True, key="daily_transaction_value")
+        st.plotly_chart(base_layout(fig, 390, dict(l=20,r=20,t=58,b=50)), width="stretch", key="daily_transaction_value")
     with c2:
         cat = f.groupby("merchant_category", dropna=False)["amount_inr"].sum().reset_index().sort_values("amount_inr", ascending=False).head(12)
         cat["merchant_category"] = cat["merchant_category"].fillna("UNKNOWN")
         fig = px.bar(cat.sort_values("amount_inr"), x="amount_inr", y="merchant_category", orientation="h", title="Transaction Value by Merchant Category", template=chart_template, text=cat.sort_values("amount_inr")["amount_inr"].map(money))
-        fig.update_traces(marker_color="#5d73ee", textposition="outside", cliponaxis=False)
+        fig.update_traces(marker_color="#7000ff", textposition="outside", cliponaxis=False)
         fig.update_xaxes(title="Transaction value (₹)", tickprefix="₹", separatethousands=True)
         fig.update_yaxes(title="")
-        st.plotly_chart(base_layout(fig, 390, dict(l=18,r=70,t=58,b=42)), use_container_width=True, key="category_value")
+        st.plotly_chart(base_layout(fig, 390, dict(l=18,r=70,t=58,b=42)), width="stretch", key="category_value")
 
     c3, c4 = st.columns(2, gap="medium")
     with c3:
-        st.plotly_chart(add_category_chargeback_chart(f), use_container_width=True, key="category_chargeback_rate")
+        st.plotly_chart(add_category_chargeback_chart(f), width="stretch", key="category_chargeback_rate")
     with c4:
         reasons = cb["reason_code"].fillna("UNKNOWN").value_counts().head(10).reset_index()
         reasons.columns = ["reason", "count"]
         fig = px.bar(reasons.sort_values("count"), x="count", y="reason", orientation="h", title="Top Chargeback Reasons", template=chart_template, text="count")
-        fig.update_traces(marker_color="#d85b91", textposition="outside", cliponaxis=False)
+        fig.update_traces(marker_color="#ff3366", textposition="outside", cliponaxis=False)
         fig.update_xaxes(title="Chargeback events")
         fig.update_yaxes(title="")
-        st.plotly_chart(base_layout(fig, 410, dict(l=18,r=50,t=58,b=42)), use_container_width=True, key="chargeback_reasons")
+        st.plotly_chart(base_layout(fig, 410, dict(l=18,r=50,t=58,b=42)), width="stretch", key="chargeback_reasons")
+
+    # Additional composition and trend visuals for deeper analysis
+    st.markdown('<div class="section">📈 Payment Health & Risk Mix</div>', unsafe_allow_html=True)
+    p1, p2, p3 = st.columns(3, gap="medium")
+    with p1:
+        status = f["status"].fillna("UNKNOWN").value_counts().reset_index()
+        status.columns = ["status", "count"]
+        fig = px.pie(status, names="status", values="count", hole=0.55, title="Transaction Status Mix", template=chart_template)
+        fig.update_traces(textposition="inside", textinfo="percent+label", marker=dict(line=dict(color="#0a0e17", width=2)))
+        st.plotly_chart(base_layout(fig, 360, dict(l=10,r=10,t=58,b=20)), width="stretch", key="transaction_status_donut")
+    with p2:
+        risk_mix = f["risk_segment"].fillna("UNKNOWN").value_counts().reset_index()
+        risk_mix.columns = ["risk_segment", "count"]
+        fig = px.pie(risk_mix, names="risk_segment", values="count", hole=0.55, title="Customer Risk Distribution", template=chart_template)
+        fig.update_traces(textposition="inside", textinfo="percent+label", marker=dict(line=dict(color="#0a0e17", width=2)))
+        st.plotly_chart(base_layout(fig, 360, dict(l=10,r=10,t=58,b=20)), width="stretch", key="risk_distribution_donut")
+    with p3:
+        sev = cb["severity"].fillna("UNKNOWN").value_counts().reset_index()
+        sev.columns = ["severity", "count"]
+        fig = px.pie(sev, names="severity", values="count", hole=0.55, title="Chargeback Severity Mix", template=chart_template)
+        fig.update_traces(textposition="inside", textinfo="percent+label", marker=dict(line=dict(color="#0a0e17", width=2)))
+        st.plotly_chart(base_layout(fig, 360, dict(l=10,r=10,t=58,b=20)), width="stretch", key="chargeback_severity_donut")
+
+    trend_cols = st.columns(2, gap="medium")
+    with trend_cols[0]:
+        daily_count = f.dropna(subset=["timestamp"]).assign(date=lambda d: d["timestamp"].dt.floor("D")).groupby("date", as_index=False).size().rename(columns={"size":"transactions"})
+        fig = px.line(daily_count, x="date", y="transactions", title="Daily Transaction Volume", template=chart_template, markers=True)
+        fig.update_traces(line=dict(width=3, color="#00f0ff"), marker=dict(size=5, color="#7000ff"))
+        fig.update_xaxes(title="Date", tickformat="%b %d", dtick="M1", showgrid=False)
+        fig.update_yaxes(title="Transactions", rangemode="tozero")
+        st.plotly_chart(base_layout(fig, 380, dict(l=20,r=20,t=58,b=50)), width="stretch", key="daily_transaction_count")
+    with trend_cols[1]:
+        cb_month = cb.dropna(subset=["transaction_timestamp"]).assign(month=lambda d: d["transaction_timestamp"].dt.to_period("M").astype(str)).groupby("month", as_index=False).agg(chargebacks=("txn_id","count"))
+        fig = px.line(cb_month, x="month", y="chargebacks", title="Monthly Chargeback Trend", template=chart_template, markers=True)
+        fig.update_traces(line=dict(width=3, color="#ff3366"), marker=dict(size=6, color="#7000ff"))
+        fig.update_xaxes(title="Month", showgrid=False)
+        fig.update_yaxes(title="Chargeback events", rangemode="tozero")
+        st.plotly_chart(base_layout(fig, 380, dict(l=20,r=20,t=58,b=50)), width="stretch", key="monthly_chargeback_trend")
 
 with tab2:
     st.markdown('<div class="section">🚨 Investigation Signals</div>', unsafe_allow_html=True)
@@ -222,21 +273,21 @@ with tab2:
         m["rate"] = 100 * m["chargebacks"] / m["transactions"].replace(0, pd.NA)
         m = m.dropna(subset=["rate"]).sort_values("rate", ascending=False).head(12).sort_values("rate")
         fig = px.bar(m, x="rate", y="merchant_name", orientation="h", title="Merchants with Highest Chargeback Rate", template=chart_template, text=m["rate"].map(lambda x: f"{x:.1f}%"))
-        fig.update_traces(marker_color="#d85b91", textposition="outside", cliponaxis=False)
+        fig.update_traces(marker_color="#ff3366", textposition="outside", cliponaxis=False)
         fig.update_xaxes(title="Chargeback rate (%)")
         fig.update_yaxes(title="")
-        st.plotly_chart(base_layout(fig, 430, dict(l=18,r=45,t=58,b=42)), use_container_width=True, key="merchant_chargeback_rate")
+        st.plotly_chart(base_layout(fig, 430, dict(l=18,r=45,t=58,b=42)), width="stretch", key="merchant_chargeback_rate")
     with c2:
         risk = f.groupby("risk_segment").agg(transactions=("txn_id", "count"), chargebacks=("chargeback_count", "sum")).reset_index()
         fig = px.bar(risk, x="risk_segment", y="chargebacks", title="Chargebacks by Customer Risk Segment", template=chart_template, text="chargebacks")
-        fig.update_traces(marker_color="#3f86c7", textposition="outside", cliponaxis=False)
+        fig.update_traces(marker_color="#00f0ff", textposition="outside", cliponaxis=False)
         fig.update_yaxes(title="Chargeback events")
-        st.plotly_chart(base_layout(fig, 430), use_container_width=True, key="risk_chargebacks")
+        st.plotly_chart(base_layout(fig, 430), width="stretch", key="risk_chargebacks")
 
     st.markdown('<div class="section">Why these are signals</div>', unsafe_allow_html=True)
     st.info("These indicators prioritize records for investigation. They are not confirmed fraud labels.")
     sig = f.groupby("risk_flag").agg(transactions=("txn_id", "count"), amount=("amount_inr", "sum"), chargebacks=("chargeback_count", "sum")).reset_index().sort_values("chargebacks", ascending=False)
-    st.dataframe(sig, use_container_width=True, hide_index=True, column_config={"amount": st.column_config.NumberColumn("Amount (₹)", format="₹%0.0f")})
+    st.dataframe(sig, width="stretch", hide_index=True, column_config={"amount": st.column_config.NumberColumn("Amount (₹)", format="₹%0.0f")})
 
 with tab3:
     st.markdown('<div class="section">🕸️ Fraud Ring Explorer</div>', unsafe_allow_html=True)
@@ -255,7 +306,7 @@ with tab3:
         gcol, tcol = st.columns([1.7,1], gap="medium")
         with gcol:
             fig, msg = network_graph(f, chosen)
-            if fig: st.plotly_chart(fig, use_container_width=True, key="network_graph")
+            if fig: st.plotly_chart(fig, width="stretch", key="network_graph")
             else: st.warning(msg)
         with tcol:
             st.markdown('<div class="card"><b>Investigation checklist</b></div>', unsafe_allow_html=True)
@@ -297,31 +348,31 @@ with tab4:
                 top = g.iloc[0]
                 st.success(f"Highest chargeback-to-transaction ratio: **{top.merchant_category}** at **{top.chargeback_rate:.1f}%** ({int(top.chargebacks):,} chargebacks across {int(top.transactions):,} transactions).")
                 fig = px.bar(g.head(10).sort_values("chargeback_rate"), x="chargeback_rate", y="merchant_category", orientation="h", title="Chargeback-to-Transaction Ratio by Category", template=chart_template, text=g.head(10).sort_values("chargeback_rate")["chargeback_rate"].map(lambda x:f"{x:.1f}%"))
-                fig.update_traces(marker_color="#d85b91", textposition="outside", cliponaxis=False)
-                st.plotly_chart(base_layout(fig, 410, dict(l=18,r=45,t=58,b=42)), use_container_width=True, key="ask_ratio")
+                fig.update_traces(marker_color="#ff3366", textposition="outside", cliponaxis=False)
+                st.plotly_chart(base_layout(fig, 410, dict(l=18,r=45,t=58,b=42)), width="stretch", key="ask_ratio")
         elif "top merchant" in q or ("merchants" in q and "chargeback" in q):
             g = f.groupby("merchant_name", dropna=False).agg(transactions=("txn_id", "count"), chargebacks=("chargeback_count", "sum"), value=("amount_inr", "sum")).reset_index().sort_values("chargebacks", ascending=False).head(10).sort_values("chargebacks")
             fig = px.bar(g, x="chargebacks", y="merchant_name", orientation="h", title="Top Merchants by Chargebacks", template=chart_template, text="chargebacks")
-            fig.update_traces(marker_color="#3f86c7", textposition="outside", cliponaxis=False)
-            st.plotly_chart(base_layout(fig, 420, dict(l=18,r=55,t=58,b=42)), use_container_width=True, key="ask_merchants")
+            fig.update_traces(marker_color="#00f0ff", textposition="outside", cliponaxis=False)
+            st.plotly_chart(base_layout(fig, 420, dict(l=18,r=55,t=58,b=42)), width="stretch", key="ask_merchants")
             if len(g): st.success(f"Highest chargeback merchant in the current filter: **{g.iloc[-1].merchant_name}** with **{int(g.iloc[-1].chargebacks):,}** chargebacks.")
         elif "failed" in q:
             g = f.groupby("merchant_category", dropna=False).agg(transactions=("txn_id", "count"), failed=("status", lambda s: (s == "FAILED").sum())).reset_index()
             g["failed_rate"] = 100 * g["failed"] / g["transactions"].replace(0, pd.NA)
             g = g.dropna(subset=["failed_rate"]).sort_values("failed_rate", ascending=False).head(12).sort_values("failed_rate")
             fig = px.bar(g, x="failed_rate", y="merchant_category", orientation="h", title="Failed Transaction Rate by Merchant Category", template=chart_template, text=g["failed_rate"].map(lambda x:f"{x:.1f}%"))
-            fig.update_traces(marker_color="#5d73ee", textposition="outside", cliponaxis=False)
-            st.plotly_chart(base_layout(fig, 410, dict(l=18,r=45,t=58,b=42)), use_container_width=True, key="ask_failed")
+            fig.update_traces(marker_color="#7000ff", textposition="outside", cliponaxis=False)
+            st.plotly_chart(base_layout(fig, 410, dict(l=18,r=45,t=58,b=42)), width="stretch", key="ask_failed")
         elif "high-risk" in q or "high risk" in q or "risk" in q:
             g = f[f["risk_segment"] == "HIGH"].groupby("merchant_category").agg(transactions=("txn_id", "count"), chargebacks=("chargeback_count", "sum"), value=("amount_inr", "sum")).reset_index().sort_values("transactions", ascending=False).head(12)
-            st.dataframe(g, use_container_width=True, hide_index=True)
+            st.dataframe(g, width="stretch", hide_index=True)
             st.info("This result shows HIGH-risk customer activity in the current filtered dataset; it is an investigation signal, not a fraud verdict.")
         elif "reason" in q or "chargeback" in q:
             r = cb["reason_code"].fillna("UNKNOWN").value_counts().head(10).reset_index(); r.columns = ["reason", "count"]; r = r.sort_values("count")
             fig = px.bar(r, x="count", y="reason", orientation="h", title="Most Common Chargeback Reasons", template=chart_template, text="count")
-            fig.update_traces(marker_color="#d85b91", textposition="outside", cliponaxis=False)
-            st.plotly_chart(base_layout(fig, 420, dict(l=18,r=55,t=58,b=42)), use_container_width=True, key="ask_reasons")
+            fig.update_traces(marker_color="#ff3366", textposition="outside", cliponaxis=False)
+            st.plotly_chart(base_layout(fig, 420, dict(l=18,r=55,t=58,b=42)), width="stretch", key="ask_reasons")
         else:
             st.warning("I can currently answer questions about chargeback rates, top merchants, failed rates, high-risk activity, and chargeback reasons. Try one of the examples above.")
 
-st.markdown("<div style='text-align:center;color:#5f7187;font-size:11px;margin-top:18px'>FinGuard UPI Fraud Investigation &amp; Merchant Analytics • AgentIQ Datathon 2026 • Synthetic dataset • Analytical risk signals only</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center;color:#8FA9C2;font-size:11px;margin-top:18px'>FinGuard UPI Fraud Investigation &amp; Merchant Analytics • AgentIQ Datathon 2026 • Synthetic dataset • Analytical risk signals only</div>", unsafe_allow_html=True)
